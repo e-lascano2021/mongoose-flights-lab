@@ -9,8 +9,6 @@ router.post('/', flightsCtrl.create)
 
 router.get('/', flightsCtrl.index)
 
-router.get('/index', flightsCtrl.index)
-
 export {
   router
 }

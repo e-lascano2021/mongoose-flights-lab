@@ -6,7 +6,7 @@ function newFlight(req, res){
 
 function create(req, res){
   Flight.create(req.body, function(error, flight){
-    res.redirect("/flights")
+    res.redirect("/flights/new")
   })
 }
 
