@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Flight List</h1>
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+<main>
+  <h1><%= title %></h1>
   <table>
     <thead>
       <tr>
@@ -24,9 +18,20 @@
           <td><%= flight.airport %></td>
           <td><%= flight.flightNo %></td>
           <td><%= flight.departs %></td>
+          <td>
+            <a href="/flights/<%= flight._id %>">
+              <button class="button">DETAILS</button>
+            </a>
+          </td>
+          <td>
+            <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST">
+              <button class="button">X</button>
+            </form>
+          </td>
         </tr>
         <% }) %>
     </tbody>
   </table>
-</body>
-</html>
+</main>
+
+<%- include('../partials/footer') %>
