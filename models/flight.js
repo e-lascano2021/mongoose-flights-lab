@@ -12,6 +12,7 @@ const ticketSchema = new Schema({
   price: {
     type: Number,
     min: 0,
+    required: true,
   },
 
 })
@@ -31,19 +32,17 @@ const flightSchema = new Schema({
 
   flightNo: {
     type: Number,
+    required: true,
   },
 
   departs: {
-    type: Number,
-    default: function(){
-      const date = new Date()
-      return date.setFullYear(date.getFullYear()+1)
-    },
+    type: Date,
+    default:
+      new Date().setFullYear(new Date().getFullYear() + 1)
   },
 
-  tickets: {
-    type: [ticketSchema]
-  }
+  tickets: [ticketSchema],
+
 })
 
 

@@ -1,4 +1,5 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/movies/show.css">
 <%- include('../partials/nav') %>
 
 <main>
@@ -13,6 +14,36 @@
     <div>Departs: </div>
     <div><%= flight.departs %></div>
   </section>
+  
+
+  <h2>Tickets</h2>
+  <form
+  id="new-ticket-form"
+      action="/flights/<%= flight._id %>/tickets/new" method="GET">
+      <button class="button">Add Ticket</button>
+</form>
+  <table>
+    <thread>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>    
+    </thread>
+    <tbody>
+      <tr>
+        <% flight.tickets.forEach(function(ticket) { %>
+        <td><%= ticket.seat %></td>
+        <td><%= ticket.price %></td>
+        <!-- ticket delete button -->
+      </tr>
+      <% }) %>
+    </tbody>
+  </table> 
 </main>
+<form 
+action="/flights/<%= flight._id %>?_method=DELETE" 
+method="POST">
+  <button class="button">Delete Flight</button>
+</form>
   
 <%- include('../partials/footer') %>

@@ -7,6 +7,9 @@ function newFlight(req, res){
 }
 
 function create(req, res){
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }  
   Flight.create(req.body, function(error, flight){
     res.redirect("/flights")
   })
@@ -38,10 +41,21 @@ function deleteFlight(req, res){
 }
 
 
+// function newTicket(req, res){
+//   // console.log("creating ticket beep bop", req)
+//   Flight.findById(req.params.id, function(err, flight){
+//     res.render('flights/tickets', {
+//       title: "Create Ticket:",
+//     })
+//   })
+// }
+
+
 export {
   newFlight as new,
   index,
   create,
   show,
   deleteFlight as delete,
+  // newTicket,
 }
