@@ -81,3 +81,7 @@ nav > a:hover {
 nav > a.active {
   color: white;
 }
+
+.fas::before {
+  font-family: "Font Awesome 5 Free";
+}
