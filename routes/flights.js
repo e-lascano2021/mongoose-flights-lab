@@ -8,13 +8,12 @@ router.get('/', flightsCtrl.index)
 router.get('/new', flightsCtrl.new)
 // localhost:3000/flights/:id - GET
 router.get('/:id', flightsCtrl.show)
-// localhost:3000/flights/:id/tickets/new - GET
-// router.get('/:id/tickets/new', flightsCtrl.newTicket)
 
 // localhost:3000/flights - POST
 router.post('/', flightsCtrl.create)
 
-
+// localhost:3000/flights/:id/tickets - GET
+router.post('/:id/tickets', flightsCtrl.createTicket)
 
 // localhost:3000/flights/:id - DELETE
 router.delete('/:id', flightsCtrl.delete)

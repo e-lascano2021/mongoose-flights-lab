@@ -41,15 +41,15 @@ function deleteFlight(req, res){
 }
 
 
-// function newTicket(req, res){
-//   // console.log("creating ticket beep bop", req)
-//   Flight.findById(req.params.id, function(err, flight){
-//     res.render('flights/tickets', {
-//       title: "Create Ticket:",
-//     })
-//   })
-// }
-
+function createTicket(req, res){
+  //console.log("work work work work work")
+  Flight.findById(req.params.id, function(error, flight) {
+    flight.tickets.push(req.body)
+    flight.save(function(err) {
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
 
 export {
   newFlight as new,
@@ -57,5 +57,5 @@ export {
   create,
   show,
   deleteFlight as delete,
-  // newTicket,
+  createTicket,
 }

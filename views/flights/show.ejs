@@ -3,7 +3,7 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1><%= title %></h1>
+  <h1>Add Ticket</h1>
   <section>
     <div>Airline: </div>
     <div><%= flight.airline %></div>
@@ -15,13 +15,24 @@
     <div><%= flight.departs %></div>
   </section>
   
+  <form action="/flights/<%= flight._id %>/tickets" method="POST">
+    <h2>Create Ticket</h2>
+  
+      <label>Seat:
+        <input name="seat" required pattern="[A-F][1-9]\d?">
+      </label><br>
+  
+      <label>Price:
+        <input name='price'>
+      </label><br>
+  
+      <a>
+        <button type="submit">Add Ticket</button>
+      </a>    
+    </form>
 
   <h2>Tickets</h2>
-  <form
-  id="new-ticket-form"
-      action="/flights/<%= flight._id %>/tickets/new" method="GET">
-      <button class="button">Add Ticket</button>
-</form>
+  <form>
   <table>
     <thread>
       <tr>
@@ -39,11 +50,12 @@
       <% }) %>
     </tbody>
   </table> 
+  </form>
+  <a 
+  action="/flights/<%= flight._id %>?_method=DELETE" 
+  method="POST">
+    <button class="button">Delete Flight</button>
+  </a>
 </main>
-<form 
-action="/flights/<%= flight._id %>?_method=DELETE" 
-method="POST">
-  <button class="button">Delete Flight</button>
-</form>
-  
+
 <%- include('../partials/footer') %>
