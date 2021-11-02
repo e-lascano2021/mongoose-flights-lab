@@ -13,23 +13,19 @@
         <div><%= flight.flightNo%></div>
         <div>Departs: </div>
         <div><%= flight.departs %></div>
-      </section>
-<form action="flights/<%= flight._id %>/">
+        <div>Destination:</div>
+        <ul>
+          <%- flight.destinations.map( f => `<li>${f.airport}</li>`).join('') %>
+        </ul>
+      </section><br>
 
-</form>
-      <% flight.destinations.forEach(destination => { %>
+      <form action="/flights/<%= flight._id %>/destinations" method="POST">
 
-        <tr>
-          <td> <%= destination.airport %> </td>
-            <td><form action="/flights/<%= flight._id %>/tickets/<%= ticket._id %>?_method=DELETE" method="POST">
-            <button>DELETE</button>
-          </form></td>
-        </tr>
-
-      <% }) %>
-      <select name="destinations" >
-        <option ></option>
-      </select> 
+        <select name="destinationId">
+        <%- destinations.map(f => `<option value="${f._id}">${f.airport}</option>`).join('') %>
+        </select>
+        <button type="submit">Add Destination</button>
+      </form>
 
       <h2>Tickets</h2>
       <div>
