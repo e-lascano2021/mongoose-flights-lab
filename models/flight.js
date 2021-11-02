@@ -24,11 +24,15 @@ const flightSchema = new Schema({
     type: String,
     enum: ['American', 'Southwest', 'United'],
   },
-
   airport: {
-    type: String, 
-    enum:['AUS', 'DFW', 'DEN', 'LAX', 'SAN'],
+    type: String,
+    enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN'], default: "DEN"
   },
+
+  destinations: [{
+    type: Schema.Types.ObjectId,
+    ref: "Destination",
+  }],
 
   flightNo: {
     type: Number,
