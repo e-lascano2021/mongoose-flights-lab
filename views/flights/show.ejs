@@ -6,7 +6,7 @@
       <h1> <%= title %></h1>
       <section>
         <div>Airline: </div>
-        <div> <%= flight.airline%></div>
+        <div><%= flight.airline%></div>
         <div>Airport: </div>
         <div><%= flight.airport %></div>
         <div>Flight #: </div>
@@ -22,7 +22,7 @@
       <form action="/flights/<%= flight._id %>/destinations" method="POST">
 
         <select name="destinationId">
-        <%- destinations.map(f => `<option value="${f._id}">${f.airport}</option>`).join('') %>
+        <%- destinations.map(f => `<option value="${f._id}">${f.airport}</option>`)`.join('') %>
         </select>
         <button type="submit">Add Destination</button>
       </form>
